@@ -1,0 +1,33 @@
+<div id="plot" style="width:90%;height:250px;"></div>
+
+  <div id="boxplot" style="width:90%;height:250px;"></div>
+
+  <div id="heatmap" style="width: 100%; height: 100%"></div>
+
+  
+  <gridster [options]="options">
+    @for (item of dashboard; track item) {
+      <gridster-item #gridsterItem [item]="item">
+        <div>
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="gridsterItem.bringToFront(1)">
+              <mat-icon>arrow_upward</mat-icon>
+              <span>Edit Plot</span>
+            </button>
+            <button mat-menu-item (click)="gridsterItem.sendToBack(1)">
+              <mat-icon>arrow_downward</mat-icon>
+              <span>Mark as Favorite</span>
+            </button>
+          </mat-menu>
+          
+        </div>
+      </gridster-item>
+    }
+  </gridster>
