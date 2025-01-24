@@ -20,7 +20,7 @@ export class DashboardService {
   );
 }
 
-  createPlot(){
+  createPlot(data: any){
 
     const header = {
       headers: new HttpHeaders()
@@ -30,22 +30,27 @@ export class DashboardService {
   );
   }
 
-  updatePlot(){
+  updatePlot(data: any){
 
     const header = {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${this.bearerToken}`)
     }
-    return this.http.put('https://alpha-backend.aicuflow.com/visualization/user-plot/17/', header  
+    return this.http.put('https://alpha-backend.aicuflow.com/visualization/user-plot/17/', header, data  
   );
   }
 
-  deletePlot() {
+  deletePlot(data: any) {
     const header = {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${this.bearerToken}`)
     }
-    return this.http.delete('https://alpha-backend.aicuflow.com/visualization/user-plot/17/', header  
+    let options = {
+      header,
+      body: data
+    }
+    
+    return this.http.delete('https://alpha-backend.aicuflow.com/visualization/user-plot/17/', options
   );
   }
 

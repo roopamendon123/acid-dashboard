@@ -1,0 +1,29 @@
+.flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex p {
+    margin: 0;
+    font-size: 10px;
+    color: gray;
+}
+.flex h6 {
+    margin: 0;
+}
+
+.dashboard  ::ng-deep .gridster-row {
+    border: none; 
+}
+
+.dashboard  ::ng-deep .gridster-column {
+    border: none; 
+}
+
+.dashboard {
+    background: #cfd5e4;
+}
+.navcontainer {
+    
+}

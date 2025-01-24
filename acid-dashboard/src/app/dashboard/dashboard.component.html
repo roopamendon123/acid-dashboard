@@ -1,14 +1,30 @@
-<div id="plot" style="width:90%;height:250px;"></div>
+<!-- 
+<div>
+<mat-sidenav-container class="navcontainer">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    [fixedInViewport]="true"
+  >
+    Sidenav
+  </mat-sidenav>
+  <mat-sidenav-content> </mat-sidenav-content>
+</mat-sidenav-container>
+  </div>  -->
 
-  <div id="boxplot" style="width:90%;height:250px;"></div>
+  <gridster [options]="options" class="dashboard">
+    
+    
+    <!-- <div class="notification">
+      <mat-icon>notifications</mat-icon>
+    </div>
+    <div class="chartHeader">
 
-  <div id="heatmap" style="width: 100%; height: 100%"></div>
-
-  
-  <gridster [options]="options">
-    @for (item of dashboard; track item) {
-      <gridster-item #gridsterItem [item]="item">
-        <div>
+    </div> -->
+    <gridster-item #gridsterItem [item]="{cols: 2, rows: 2, y: 0, x: 0}" style="border: none;">
+      <div class="flex">
           <button
             mat-icon-button
             [matMenuTriggerFor]="menu"
@@ -16,18 +32,116 @@
           >
             <mat-icon>more_vert</mat-icon>
           </button>
+          <div>
+          <h6>Distribution Plot</h6>
+          <p>Filename.CSV</p>
+        </div>
+
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="gridsterItem.bringToFront(1)">
-              <mat-icon>arrow_upward</mat-icon>
+            <button mat-menu-item (click)="editPlot()">
+              <mat-icon>edit</mat-icon>
               <span>Edit Plot</span>
             </button>
-            <button mat-menu-item (click)="gridsterItem.sendToBack(1)">
-              <mat-icon>arrow_downward</mat-icon>
+            <button mat-menu-item>
+              <mat-icon>star</mat-icon>
               <span>Mark as Favorite</span>
+            </button>
+            <button mat-menu-item (click)="deletePlot()">
+              <mat-icon>delete</mat-icon>
+              <span>Remove Plot</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>filter_list</mat-icon>
+              <span>Filter Data</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>settings</mat-icon>
+              <span>settings</span>
             </button>
           </mat-menu>
           
         </div>
-      </gridster-item>
-    }
+      <div id="plot" style="width:90%;height:250px;"></div>
+    </gridster-item>
+    <gridster-item [item]="{cols: 2, rows: 2, y: 0, x: 0}" style="border: none;"> 
+      <div class="flex">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <div>
+        <h6>Box Plot</h6>
+        <p>Filename.CSV</p>
+      </div>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editPlot()">
+            <mat-icon>edit</mat-icon>
+            <span>Edit Plot</span>
+          </button>
+          <button mat-menu-item >
+            <mat-icon>star</mat-icon>
+            <span>Mark as Favorite</span>
+          </button>
+          <button mat-menu-item (click)="deletePlot()">
+            <mat-icon>delete</mat-icon>
+            <span>Remove Plot</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>filter_list</mat-icon>
+            <span>Filter Data</span>
+          </button>
+          <button mat-menu-item >
+            <mat-icon>settings</mat-icon>
+            <span>settings</span>
+          </button>
+        </mat-menu>
+        
+      </div>
+      <div id="boxplot" style="width:90%;height:250px;"></div>
+    </gridster-item>       
+    <gridster-item [item]="{cols: 2, rows: 4, y: 0, x: 2}">
+      <div class="flex">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <div>
+          <h6>Correlation Heatmap</h6>
+          <p>Filename.CSV</p>
+        </div>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editPlot()">
+              <mat-icon>edit</mat-icon>
+              <span>Edit Plot</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>star</mat-icon>
+              <span>Mark as Favorite</span>
+            </button>
+            <button mat-menu-item (click)="deletePlot()">
+              <mat-icon>delete</mat-icon>
+              <span>Remove Plot</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>filter_list</mat-icon>
+              <span>Filter Data</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>settings</mat-icon>
+              <span>settings</span>
+            </button>
+          </mat-menu>
+          
+        </div>
+      <div id="heatmap" style="width: 100%; height: 100%"></div>
+    </gridster-item>           
   </gridster>
+  
+  
